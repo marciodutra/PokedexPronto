@@ -1,161 +1,96 @@
-# PokePanda
+# Pokedex
 
 ![Draft Wireframe](public/mockup.png)
 
-## Description
+## Descrição
 
-A web application to view and search for Pokémon using Vue 3 and PokeAPI.
+Um aplicativo da web para visualizar e pesquisar Pokémon usando Vue 3 e PokeAPI.
 
-## Technologies Used
+## Tecnologias Utilizadas
 
-- **Vue 3**: The main framework used for building the application.
-- **TypeScript**: Provides static typing to enhance code quality and maintainability.
-- **Vite**: A fast and lightweight development server and build tool.
-- **Pinia**: For state management, offering a simpler API and better TypeScript support compared to Vuex.
-- **PrimeVue**: A UI component library used for building responsive and visually appealing components.
-- **PrimeFlex**: A CSS utility library used in conjunction with PrimeVue for layout and styling.
-- **PrimeIcons**: Icon library for adding vector icons to the application.
-- **ESLint**: For linting to ensure code quality.
-- **Prettier**: For code formatting to maintain a consistent style.
-- **Vitest**: A fast unit testing framework.
-- **@testing-library/vue**: For testing Vue components in a way that resembles user interactions.
-- **Apollo Client**: For making GraphQL queries to the PokeAPI.
+- **Vue 3**: O framework principal usado para construir a aplicação.
+- **TypeScript**: fornece digitação estática para melhorar a qualidade e a capacidade de manutenção do código.
+- **Vite**: um servidor de desenvolvimento e ferramenta de construção rápido e leve.
+- **Pinia**: Para gerenciamento de estado, oferecendo uma API mais simples e melhor suporte a TypeScript em comparação com Vuex.
+- **PrimeVue**: uma biblioteca de componentes de UI usada para criar componentes responsivos e visualmente atraentes.
+- **PrimeFlex**: Uma biblioteca de utilitários CSS usada em conjunto com PrimeVue para layout e estilo.
+- **PrimeIcons**: Biblioteca de ícones para adicionar ícones vetoriais ao aplicativo.
+- **ESLint**: Para linting para garantir a qualidade do código.
+- **Mais bonito**: Para formatação de código para manter um estilo consistente.
+- **Vitest**: uma estrutura rápida de testes unitários.
+- **@testing-library/vue**: Para testar componentes Vue de uma forma que se assemelhe às interações do usuário.
+- **Cliente Apollo**: Para fazer consultas GraphQL ao PokeAPI.
 
-## Installation
+## Instalação
 
-1. Clone the repository:
+1. Clone o repositório:
 
    ```sh
    git clone <repository-url>
    ```
 
-2. Navigate to the project directory:
+2. Navegue até o diretório do projeto:
 
    ```sh
-   cd pokepanda
+   cd pokedex
    ```
 
-### Using npm
+### Usando npm
 
-3. Install dependencies:
+3. Instale dependências:
    ```sh
    npm install
    ```
 
-### Using pnpm
+### Usando pnpm
 
-3. Install dependencies:
+3. Instale dependências:
    ```sh
    pnpm install
    ```
 
-### Using yarn
+### usando yarn
 
-3. Install dependencies:
+3. Instale dependências:
    ```sh
    yarn install
    ```
 
-## Running the Application
+## Executando o aplicativo
 
-### Using npm
+### Usando npm
 
-1. Start the development server:
+1. Inicie o servidor de desenvolvimento:
 
    ```sh
    npm run dev
    ```
 
-2. Open the browser and navigate to `http://localhost:5173`
+2. Abra o navegador e navegue até `http://localhost:5173`
 
-### Using pnpm
+### Usando pnpm
 
-1. Start the development server:
+1. Inicie o servidor de desenvolvimento:
+
 
    ```sh
    pnpm run dev
    ```
 
-2. Open the browser and navigate to `http://localhost:5173`
+2. Abra o navegador e navegue até `http://localhost:5173`
 
-### Using yarn
+### Usando yarn
 
-1. Start the development server:
+1. Inicie o servidor de desenvolvimento:
 
    ```sh
    yarn dev
    ```
 
-2. Open the browser and navigate to `http://localhost:5173`
-
-## Building for Production
-
-### Using npm
-
-1. Build the application:
-
-   ```sh
-   npm run build
-   ```
-
-2. Serve the built application:
-   ```sh
-   npm run dev
-   ```
-
-### Using pnpm
-
-1. Build the application:
-
-   ```sh
-   pnpm run build
-   ```
-
-2. Serve the built application:
-   ```sh
-   pnpm run dev
-   ```
-
-### Using yarn
-
-1. Build the application:
-
-   ```sh
-   yarn build
-   ```
-
-2. Serve the built application:
-   ```sh
-   yarn dev
-   ```
-
-## Testing
-
-### Unit Tests
-
-### Using npm
-
-1. Run unit tests:
-   ```sh
-   npm run test:unit
-   ```
-
-### Using pnpm
-
-1. Run unit tests:
-   ```sh
-   pnpm run test:unit
-   ```
-
-### Using yarn
-
-1. Run unit tests:
-   ```sh
-   yarn test:unit
-   ```
+2. Abra o navegador e navegue até `http://localhost:5173`
 
 ## Decision Explanation
 
-- **Vue 3 with TypeScript**: Leveraged for its static typing capabilities, which enhance code quality and maintainability.
-- **PrimeVue and PrimeFlex**: Utilized for rapid and efficient UI construction, ensuring a responsive design.
-- **PokeAPI**: Chosen for its robustness and ease of use, providing a comprehensive data set for Pokémon.
+- **Vue 3 com TypeScript**: aproveitado por seus recursos de digitação estática, que melhoram a qualidade e a capacidade de manutenção do código.
+- **PrimeVue e PrimeFlex**: Utilizados para construção de UI rápida e eficiente, garantindo um design responsivo.
+- **PokeAPI**: Escolhido por sua robustez e facilidade de uso, fornecendo um conjunto abrangente de dados para Pokémon.
