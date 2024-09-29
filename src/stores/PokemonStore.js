@@ -1,40 +1,36 @@
 import { defineStore } from 'pinia'
 
-export const usePokemonStore = defineStore('PokemonStore', {
-  // Data
+export const usePokemonStore = defineStore('PokemonStore', {  
   state: () => ({
     pokemonList: [],
     pokemonIndex: 1,
     pokemonDetails: {},
     nextPokemon: {},
     previousPokemon: {},
-    generation: 'Generation 1 (Kanto)',
+    generation: 'Geração 1 (Kanto)',
     generations: [
-      'Generation 1 (Kanto)',
-      'Generation 2 (Johto)',
-      'Generation 3 (Hoenn)',
-      'Generation 4 (Sinnoh)',
-      'Generation 5 (Unys)',
-      'Generation 6 (Kalos)',
-      'Generation 7 (Alola)',
-      'Generation 8 (Galar & Hisui)',
-      'Generation 9 (Paldea)'
+      'Geração 1 (Kanto)',
+      'Geração 2 (Johto)',
+      'Geração 3 (Hoenn)',
+      'Geração 4 (Sinnoh)',
+      'Geração 5 (Unys)',
+      'Geração 6 (Kalos)',
+      'Geração 7 (Alola)',
+      'Geração 8 (Galar & Hisui)',
+      'Geração 9 (Paldea)'
     ],
-    sort: 'Ascending number',
-    sorts: ['Ascending number', 'Descending number', 'A-Z', 'Z-A']
+    sort: 'Número crescente',
+    sorts: ['Número crescente', 'Número decrescente', 'A-Z', 'Z-A']
   }),
-
-  // Computed
+ 
   getters: {
     shortPokemonList: (state) => {
       return state.pokemonList.slice(0, 12)
     }
   },
-
-  // Methods
+  
   actions: {
-    async fetchPokemons(pokemonList, start_index, number) {
-      // Loader Logic
+    async fetchPokemons(pokemonList, start_index, number) {     
       const showMoreButton = document.getElementById('show-more-button')
       const loader = document.getElementById('loader')
       if (showMoreButton && loader) {
@@ -71,8 +67,7 @@ export const usePokemonStore = defineStore('PokemonStore', {
         this.sortPokemons(this.sort)
       }
       this.pokemonIndex = start_index + number
-
-      // Remove Loader
+      
       if (showMoreButton && loader) {
         showMoreButton.classList.remove('d-none')
         loader.classList.add('d-none')
@@ -129,44 +124,44 @@ export const usePokemonStore = defineStore('PokemonStore', {
     },
     filterGeneration(newGeneration) {
       switch (newGeneration) {
-        case 'Generation 1 (Kanto)':
-          this.generation = 'Generation 1 (Kanto)'
+        case 'Geração 1 (Kanto)':
+          this.generation = 'Geração 1 (Kanto)'
           this.fetchPokemons([], 1, 12)
           break
-        case 'Generation 2 (Johto)':
-          this.generation = 'Generation 2 (Johto)'
+        case 'Geração 2 (Johto)':
+          this.generation = 'Geração 2 (Johto)'
           this.fetchPokemons([], 152, 12)
           break
-        case 'Generation 3 (Hoenn)':
-          this.generation = 'Generation 3 (Hoenn)'
+        case 'Geração 3 (Hoenn)':
+          this.generation = 'Geração 3 (Hoenn)'
           this.fetchPokemons([], 252, 12)
           break
-        case 'Generation 4 (Sinnoh)':
-          this.generation = 'Generation 4 (Sinnoh)'
+        case 'Geração 4 (Sinnoh)':
+          this.generation = 'Geração 4 (Sinnoh)'
           this.fetchPokemons([], 387, 12)
           break
         case 'Generation 5 (Unys)':
           this.generation = 'Generation 5 (Unys)'
           this.fetchPokemons([], 494, 12)
           break
-        case 'Generation 6 (Kalos)':
-          this.generation = 'Generation 6 (Kalos)'
+        case 'Geração 6 (Kalos)':
+          this.generation = 'Geração 6 (Kalos)'
           this.fetchPokemons([], 650, 12)
           break
-        case 'Generation 7 (Alola)':
-          this.generation = 'Generation 7 (Alola)'
+        case 'Geração 7 (Alola)':
+          this.generation = 'Geração 7 (Alola)'
           this.fetchPokemons([], 722, 12)
           break
-        case 'Generation 8 (Galar & Hisui)':
-          this.generation = 'Generation 8 (Galar & Hisui)'
+        case 'Geração 8 (Galar & Hisui)':
+          this.generation = 'Geração 8 (Galar & Hisui)'
           this.fetchPokemons([], 810, 12)
           break
-        case 'Generation 9 (Paldea)':
-          this.generation = 'Generation 9 (Paldea)'
+        case 'Geração 9 (Paldea)':
+          this.generation = 'Geração 9 (Paldea)'
           this.fetchPokemons([], 906, 12)
           break
         default:
-          this.generation = 'Generation 1 (Kanto)'
+          this.generation = 'Geração 1 (Kanto)'
           this.fetchPokemons([], 1, 12)
       }
     },
