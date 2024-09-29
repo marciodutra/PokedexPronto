@@ -18,9 +18,7 @@ defineProps({
         <v-img
           :src="pokemon.picture"
           height="200px"
-          class="picture-pokemon-card-background"
-          cover
-        ></v-img>
+          class="picture-pokemon-card-background"></v-img>
 
         <p class="pokemon-id">N°{{ pokemon.id }}</p>
 

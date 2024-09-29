@@ -16,7 +16,6 @@ defineProps({
   }
 })
 
-// console.log(props.stats)
 </script>
 
 <template>

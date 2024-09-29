@@ -13,23 +13,23 @@ defineProps({
 
 const pokemonGeneration = (pokemon) => {
   if (pokemon.id <= 151) {
-    return 'Generation 1 (Kanto)'
+    return 'Geração 1 (Kanto)'
   } else if (pokemon.id <= 251) {
-    return 'Generation 2 (Johto)'
+    return 'Geração 2 (Johto)'
   } else if (pokemon.id <= 386) {
-    return 'Generation 3 (Hoenn)'
+    return 'Geração 3 (Hoenn)'
   } else if (pokemon.id <= 493) {
-    return 'Generation 4 (Sinnoh)'
+    return 'Geração 4 (Sinnoh)'
   } else if (pokemon.id <= 649) {
-    return 'Generation 5 (Unova)'
+    return 'Geração 5 (Unova)'
   } else if (pokemon.id <= 721) {
-    return 'Generation 6 (Kalos)'
+    return 'Geração 6 (Kalos)'
   } else if (pokemon.id <= 809) {
-    return 'Generation 7 (Alola)'
+    return 'Geração 7 (Alola)'
   } else if (pokemon.id <= 905) {
-    return 'Generation 8 (Galar & Hisui)'
+    return 'Geração 8 (Galar & Hisui)'
   } else {
-    return 'Generation 9 (Paldea)'
+    return 'Geração 9 (Paldea)'
   }
 }
 </script>
@@ -60,22 +60,22 @@ const pokemonGeneration = (pokemon) => {
       class="pb-3 col-12 col-md-6 col-lg-4 order-2 order-md-3 order-lg-1 mx-auto"
     >
       <section id="pokemon-sizes" class="pb-2">
-        <h3>Sizes</h3>
+        <h3>Tamanhos</h3>
         <div
           class="d-flex justify-content-around gap-0 gam-sm-3 gap-lg-0 flex-column flex-sm-row flex-lg-column"
         >
           <p>
-            <i class="fa-solid fa-ruler"></i>Height: <strong>{{ pokemon.height / 10 }} m</strong>
+            <i class="fa-solid fa-ruler"></i>Altura: <strong>{{ pokemon.height / 10 }} m</strong>
           </p>
           <p>
-            <i class="fa-solid fa-weight-hanging"></i>Weight:
+            <i class="fa-solid fa-weight-hanging"></i>Peso:
             <strong>{{ pokemon.weight / 10 }} kg</strong>
           </p>
         </div>
       </section>
 
       <section id="pokemon-elements">
-        <h3>Types</h3>
+        <h3>Tipos</h3>
         <div class="pokemon-types d-flex justify-content-center gap-3">
           <v-card-subtitle
             v-for="element in pokemon.type"
