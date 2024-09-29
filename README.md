@@ -39,7 +39,7 @@ Um aplicativo da web para visualizar e pesquisar Pokémon usando Vue 3 e PokeAPI
 
 3. Instale dependências:
    ```sh
-   npm install
+   npm install ou  npm install --legacy-peer-deps
    ```
 
 ### Usando pnpm
