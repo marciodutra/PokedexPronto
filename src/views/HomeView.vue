@@ -1,70 +1,88 @@
-<script setup lang="ts">
-import PokemonList from '@/components/PokemonList.vue'
-import IconField from 'primevue/iconfield'
-import InputIcon from 'primevue/inputicon'
-import InputText from 'primevue/inputtext'
-import usePokemonStore from '@/stores/pokemonStore'
-import { onMounted, ref, computed } from 'vue'
-import { DATA_LIMIT as LIMIT, DATA_OFFSET as OFFSET } from '@/constants'
-import ProgressSpinner from 'primevue/progressspinner'
-import useSearch from '@/composables/useSearch'
-import usePagination from '@/composables/usePagination'
-import useSort from '@/composables/useSort'
-import Pokemon from '@/models/Pokemon'
+<script setup>
+import { ref, watch, onMounted } from 'vue'
+import HomeBanner from '@/components/HomeBanner.vue'
+import PokemonCard from '@/components/PokemonCard.vue'
+import SearchInputs from '@/components/SearchInputs.vue'
+import SelectInputs from '@/components/SelectInputs.vue'
+import ScrollToTopButton from '@/components/ScrollToTopButton.vue'
 
-const store = usePokemonStore()
+import { usePokemonStore } from '@/stores/PokemonStore'
 
-const { sortKey, sortOrder, sortField, setSort, sortFunction } = useSort<Pokemon>()
-
-const { filter, filteredData } = useSearch<Pokemon>(
-  computed(() => store.pokemons),
-  (pokemon: Pokemon, filter) => pokemon.name.toLowerCase().includes(filter.toLowerCase())
-)
-
-const sortedAndFilteredData = computed<Pokemon[]>(() =>
-  [...filteredData.value].sort(sortFunction.value)
-)
-
-const { rowsPerPage, currentPage, setPage, totalItems, paginatedData } = usePagination<Pokemon>({
-  data: sortedAndFilteredData,
-  rowsPerPage: ref(LIMIT),
-  currentPage: ref(OFFSET)
-})
+const pokemonStore = usePokemonStore()
 
 onMounted(() => {
-  store.loadAllPokemons()
+  if (pokemonStore.pokemonList.length === 0) {
+    const showMoreButton = document.getElementById('show-more-button')
+    const loader = document.getElementById('loader')
+    showMoreButton.classList.add('d-none')
+    loader.classList.remove('d-none')
+    console.log(showMoreButton)
+    console.log(loader)
+    pokemonStore.fetchPokemons([], 1, 12)
+  }
 })
 </script>
 
 <template>
-  <section>
-    <h1 class="text-center text-3xl font-bold mb-5">Bem vindo ao Pokédex!</h1>
-    <div v-if="store.loading" class="flex justify-center items-center">
-      <ProgressSpinner aria-label="loading" />
+  <HomeBanner />
+  <main>
+    <section id="search-sort-pokemons" class="mt-2 mb-3 gap-2 gap-sm-0">
+      <SearchInputs />
+      <SelectInputs />
+    </section>
+
+    <h1>{{ pokemonStore.generation }}</h1>
+    <v-divider></v-divider>
+
+    <v-container style="padding: 0px">
+      <v-row no-gutters>
+        <v-col
+          v-for="pokemon in pokemonStore.pokemonList"
+          :key="`pokemon-${pokemon.id}`"
+          cols="12"
+          sm="6"
+          md="4">
+          <PokemonCard :pokemon="pokemon" />
+        </v-col>
+      </v-row>
+    </v-container>
+    <div class="big-blue-button">
+      <v-btn
+        id="show-more-button"
+        elevated
+        size="x-large"
+        @click="pokemonStore.fetchPokemons(pokemonStore.pokemonList, pokemonStore.pokemonIndex, 18)">
+      MOSTRAR MAIS POKÉMONS
+      </v-btn>
+      <div id="loader" class="d-none"></div>
     </div>
-    <div v-else>
-      <div class="flex justify-center mb-4">
-        <IconField class="w-full md:w-3">
-          <InputIcon class="pi pi-search" />
-          <InputText
-            v-model="filter"
-            type="text"
-            class="w-full"
-            placeholder="Pesquise um Pokemon"
-          />
-        </IconField>
-      </div>
-      <div>
-        <PokemonList
-          :pokemons="paginatedData"
-          :total-items="totalItems"
-          :rows-per-page="rowsPerPage"
-          :current-page="currentPage"
-          :sort="{ key: sortKey, field: sortField, order: sortOrder }"
-          @sort-change="setSort"
-          @page-change="setPage"
-        />
-      </div>
+    <div>
+      <ScrollToTopButton />
     </div>
-  </section>
+  </main>
 </template>
+
+<style scoped>
+h1 {
+  text-align: center;
+  color: #30a7d7;
+  margin: 0;
+}
+
+#loader {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #111827;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
