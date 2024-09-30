@@ -26,7 +26,7 @@ Um aplicativo da web para visualizar e pesquisar Pokémon usando Vue 3 e PokeAPI
 1. Clone o repositório:
 
    ```sh
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/marciodutra/PokedexPronto.git)
    ```
 
 2. Navegue até o diretório do projeto:
